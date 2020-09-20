@@ -1,0 +1,10 @@
+3 //length of alphabet
+3 //number of possible conditions
+0 //point of start
+1 2 //1-number of finale states, 2-finale state (it can be 2 1 3)
+0 a 1 // 0->1 throw a
+1 b 2
+0 c 2
+2 a 0
+1 b 0
+0 a 0
