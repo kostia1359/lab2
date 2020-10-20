@@ -10,17 +10,12 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        /*System.out.println("Enter filename:");
-
-        String filename = sc.nextLine();
-        Path path = Paths.get(filename);
-        File file = path.toFile();*/
 
         File file = Paths.get("test.txt").toFile();
 
         try {
             Automate automate = new Automate(file);
-            //automate.matrix();
+
             System.out.println("Enter the length of word:");
 
             while (sc.hasNextLine()){

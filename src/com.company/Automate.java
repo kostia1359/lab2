@@ -18,37 +18,34 @@ public class Automate {
     private HashSet<Character> allLetters = new HashSet<>();
     private ArrayList<String> allProbWord = new ArrayList<>();
 
-//    public void matrix (){
-//        for(int i = 0; i < stateQty; i++){
-//            for (int j = 0; j < stateQty; j++){
-//                System.out.print(transitionFunction[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
-//    }
-
-
     Automate(File file) throws FileNotFoundException {
         Scanner scanner = new Scanner(file);
+        String finalStateLine = scanner.nextLine();
+        var finalStateString = finalStateLine.split(" ");
+
         alphabetLen = Integer.parseInt(scanner.nextLine());
         stateQty = Integer.parseInt(scanner.nextLine());
         startState = Integer.parseInt(scanner.nextLine());
-        String finalStateLine = scanner.nextLine();
-        var finalStateString = finalStateLine.split(" ");
         finalStateQty = Integer.parseInt(finalStateString[0]);
+
         for (int i = 1; i <= finalStateQty; i++) {
             finalStates.add(Integer.parseInt(finalStateString[i]));
         }
+
         initTransitionFunction();
         initNeighbours();
+
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             var statesAndLetters = line.split(" ");
             int state1 = Integer.parseInt(statesAndLetters[0]);
             int state2 = Integer.parseInt(statesAndLetters[2]);
-            neighboursMatrix[state1][state2] += 1;
             var letter = statesAndLetters[1].charAt(0);
+
+            neighboursMatrix[state1][state2] += 1;
+
             transitionFunction[state1][state2].add(letter);
+            
             allLetters.add(letter);
         }
     }
